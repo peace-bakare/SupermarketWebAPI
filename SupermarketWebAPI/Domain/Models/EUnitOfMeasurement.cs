@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SupermarketWebAPI.Domain.Models
 {
+    //An attribute is a way to define metadata over classes, interfaces, properties and other components of the C# language.
     public enum EUnitOfMeasurement : byte
     {
         [Description("UN")]

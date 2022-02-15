@@ -21,6 +21,7 @@ namespace SupermarketWebAPI.Controllers
             _mapper = mapper;
         }
 
+        //GET api/products
         [HttpGet]
         public async Task<IEnumerable<ProductResource>> ListAsync()
         {

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace SupermarketWebAPI.Controllers
 {
+    //Controllers Handles Requests and Responses
     [Route("/api/[controller]")]
     public class CategoriesController : Controller
     {
@@ -23,6 +24,7 @@ namespace SupermarketWebAPI.Controllers
             _mapper = mapper;
         }
 
+        //GET api/categories
         [HttpGet]
         public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
@@ -32,6 +34,7 @@ namespace SupermarketWebAPI.Controllers
             return resources;
         }
 
+        //POST api/categories
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
         {
@@ -53,6 +56,7 @@ namespace SupermarketWebAPI.Controllers
             return Ok(categoryResponse);
         }
 
+        //PUT api/categories
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryResource resource)
         {
@@ -69,6 +73,7 @@ namespace SupermarketWebAPI.Controllers
             return Ok(categoryResource);
         }
 
+        //DELETE api/categories
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

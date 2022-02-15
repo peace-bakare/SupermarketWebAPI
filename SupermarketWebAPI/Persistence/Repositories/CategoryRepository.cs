@@ -13,11 +13,11 @@ namespace SupermarketWebAPI.Persistence.Repositories
     public class CategoryRepository : BaseRepository, ICategoryRepository
     {
 
-        //private readonly ICategoryRepository _context;
+        private readonly AppDbContext _context;
 
         public CategoryRepository (AppDbContext context) : base(context)
         {
-
+            _context = context;
         }
 
         public async Task<IEnumerable<Category>> ListAsync()
