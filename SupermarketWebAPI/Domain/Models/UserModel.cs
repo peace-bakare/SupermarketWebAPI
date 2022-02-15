@@ -13,6 +13,6 @@ namespace SupermarketWebAPI.Domain.Models
 
         public string EmailAddress { get; set; }
 
-        public string DateOfJoining { get; set; }
+        public DateTime DateOfJoining { get; set; }
     }
 }

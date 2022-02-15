@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SupermarketWebAPI.Domain.Models;
 using SupermarketWebAPI.Domain.Services;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace SupermarketWebAPI.Controllers
 {
+    [Route("api/[controller")]
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;

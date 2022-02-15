@@ -14,9 +14,13 @@ using System.Threading.Tasks;
 
 namespace SupermarketWebAPI.Controllers
 {
+    [Authorize]
+    [Route("api/[controller]")]
+    [ApiController]
     public class LoginController : Controller
     {
         private IConfiguration _configuration;
+
 
         public LoginController (IConfiguration configuration)
         {
@@ -47,7 +51,7 @@ namespace SupermarketWebAPI.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.Username),
                 new Claim(JwtRegisteredClaimNames.Email, userInfo.EmailAddress),
-                new Claim("DateOfJoining", userInfo.DateOfJoining.ToString()), //"yyyy-MM-dd"
+                new Claim("DateOfJoining", userInfo.DateOfJoining.ToString("yyyy-MM-dd")),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -60,13 +64,14 @@ namespace SupermarketWebAPI.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        [NonAction]
         private UserModel AuthenticateUser(UserModel login)
         {
             UserModel user = null;
 
-            if (login.Username == "Jignesh")
+            if (login.Username == "Peace")
             {
-                user = new UserModel { Username = "Peace Bakare", EmailAddress = "peeace.bakare@gmail.com" };
+                user = new UserModel { Username = "Peace", EmailAddress = "peace.bakare@gmail.com" };
             }
             return user;
         }

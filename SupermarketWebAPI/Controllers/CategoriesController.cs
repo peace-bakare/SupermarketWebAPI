@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SupermarketWebAPI.Domain.Models;
 using SupermarketWebAPI.Domain.Services;
@@ -25,6 +26,7 @@ namespace SupermarketWebAPI.Controllers
         }
 
         //GET api/categories
+        [Authorize]
         [HttpGet]
         public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
