@@ -21,7 +21,6 @@ namespace SupermarketWebAPI.Controllers
     {
         private IConfiguration _configuration;
 
-
         public LoginController (IConfiguration configuration)
         {
             _configuration = configuration;
