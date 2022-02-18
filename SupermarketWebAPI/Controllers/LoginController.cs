@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -66,13 +65,21 @@ namespace SupermarketWebAPI.Controllers
         [NonAction]
         private UserModel AuthenticateUser(UserModel login)
         {
-            UserModel user = null;
+            //UserModel user = null;
 
-            if (login.Username == "Peace")
+            //if (login.Username == "Peace")
+            //{
+            //    user = new UserModel { Username = "Peace", EmailAddress = "peace.bakare@gmail.com" };
+            //}
+            //return user;
+            var currentUser = UserConstants.Users.FirstOrDefault(p => p.Username.ToLower() == login.Username.ToLower()
+            && p.Password == login.Password);
+
+            if (currentUser == null)
             {
-                user = new UserModel { Username = "Peace", EmailAddress = "peace.bakare@gmail.com" };
+                return currentUser;
             }
-            return user;
+            return null;
         }
 
         [HttpGet]
@@ -80,7 +87,7 @@ namespace SupermarketWebAPI.Controllers
         {
             var currentUser = HttpContext.User;
             int spendingTimeWithCompany = 0;
-
+                    
             if(currentUser.HasClaim(c => c.Type == "DateOfJoining"))
             {
                 DateTime date = DateTime.Parse(currentUser.Claims.FirstOrDefault(c => c.Type == "DateOfJoining").Value);

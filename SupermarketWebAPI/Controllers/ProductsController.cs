@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SupermarketWebAPI.Controllers
 {
-    [Route("api/[controller")]
+    [Route("api/[controller]")]
     [Authorize]
     public class ProductsController : Controller
     {

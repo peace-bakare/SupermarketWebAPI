@@ -26,8 +26,8 @@ namespace SupermarketWebAPI.Controllers
         }
 
         //GET api/categories
-        [Authorize]
-        [HttpGet]
+        //[Authorize]
+        //[HttpGet]
         public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
             var categories = await _categoryService.ListAsync();
